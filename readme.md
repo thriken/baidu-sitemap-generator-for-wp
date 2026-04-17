@@ -13,11 +13,8 @@ This pulgin generates a Baidu XML-Sitemap for WordPress Blog. Also Build a real 
 
 
 Related Links:
-
-* <a href="http://liucheng.name/2113/" title="Baidu Sitemap Plugin for WordPress">Plugin Homepage</a>
-* <a href="http://liucheng.name/2113/" title="Baidu Sitemap FAQ">Plugin and Baidu-Sitemap FAQ</a>
-* <a href="http://liucheng.name/2113/">Report a BUG</a>
-* <a href="http://liucheng.name/2113/">Suggest a Feature</a>
+* <a href="https://blog.elec.top/baidu-sitemap-generator.html">Report a BUG</a>
+* <a href="http://liucheng.name/2113/">原作者链接</a>
 * <a href="http://zhanzhang.baidu.com/">百度站长平台</a>
 
 V2.0.1
