@@ -417,7 +417,7 @@ function baidu_sitemap_is_auto_daily() {
 
 function baidu_sitemap_by_post($post_ID) {
 	$get_baidu_sitemap_options = get_option(NEW_BAIDU_SITEMAP_OPTION);
-	if($get_baidu_sitemap_options['lc_is_update_sitemap_when_post'] == '1'){
+	if(is_array($get_baidu_sitemap_options) && isset($get_baidu_sitemap_options['lc_is_update_sitemap_when_post']) && $get_baidu_sitemap_options['lc_is_update_sitemap_when_post'] == '1'){
 		   wp_clear_scheduled_hook('do_baidu_sitemap_by_post');
 		   wp_clear_scheduled_hook('do_this_auto_daily');
 		   wp_schedule_single_event(time()+10, 'do_baidu_sitemap_by_post'); 
