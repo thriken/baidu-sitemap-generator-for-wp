@@ -1,0 +1,52 @@
+name: Auto-Pack and Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-release:
+    runs-on: ${{ runner.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract repository name and tag
+        id: extract-info
+        run: |
+          REPO_NAME="${{ github.repository }}"
+          REPO_NAME="${REPO_NAME#*/}" # Remove owner/
+          TAG_NAME="${{ github.ref }}"
+          TAG_NAME="${TAG_NAME#refs/tags/}" # Remove refs/tags/
+          echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+          echo "Archive name: $REPO_NAME-$TAG_NAME.zip"
+
+      - name: Create zip archive
+        run: |
+          ARCHIVE_NAME="${{ env.REPO_NAME }}-${{ env.TAG_NAME }}.zip"
+          if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
+            zip -r "$ARCHIVE_NAME" . -x "*.git*" "*.github*" "node_modules/*" "*.log"
+          elif [[ "$RUNNER_OS" == "Windows" ]]; then
+            Compress-Archive -Path . -DestinationPath "$ARCHIVE_NAME" -Force
+          fi
+        shell: bash
+
+      - name: Upload release asset
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-zip
+          path: ${{ env.REPO_NAME }}-${{ env.TAG_NAME }}.zip
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ env.TAG_NAME }}
+          name: Release ${{ env.TAG_NAME }}
+          body: |
+            Auto-generated release from GitHub Actions.
+            Asset: ${{ env.REPO_NAME }}-${{ env.TAG_NAME }}.zip
+          artifacts: ${{ env.REPO_NAME }}-${{ env.TAG_NAME }}.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
