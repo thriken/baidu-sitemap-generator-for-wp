@@ -17,6 +17,17 @@ Related Links:
 * <a href="http://liucheng.name/2113/">原作者链接</a>
 * <a href="http://zhanzhang.baidu.com/">百度站长平台</a>
 
+v2.0.3 2026-5-26
+1. baidu_sitemao.php 第220行 一个过时的语法 ，get_all_category_ids() 修改为 get_terms()
+
+v2.0.2 [2026年5月15日] 
+1. 修复一个语法不严谨
+    问题在baidu_sitemap.php第420行：$get_baidu_sitemap_options 可能是字符串而非数组。
+    需要添加类型检查：
+    添加了 is_array() 和 isset() 检查，确保 $get_baidu_sitemap_options 是数组且包含该键时才访问。
+
+
+
 V2.0.1
 1. 修复了一个已弃用的方法  add_options_page('插件名称', '插件名称', 8, basename(__FILE__), 'my_options_page');   8->'manage_options'
 2. 语法升级到PHP7.4+

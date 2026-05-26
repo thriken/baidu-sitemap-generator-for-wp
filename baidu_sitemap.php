@@ -217,7 +217,7 @@ function build_baidu_sitemap() {
 		}
 		## get_category_link
 		if($array_baidu_sitemap_options['lc_category_select']){ 
-			$category_ids = get_all_category_ids();
+			$category_ids = get_terms();
 			if($category_ids){
 				foreach($category_ids as $cat_id) {
 					$loc = get_category_link($cat_id);
