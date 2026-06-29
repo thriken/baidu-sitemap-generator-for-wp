@@ -1,26 +1,37 @@
-﻿===Baidu Sitemap Generator===
+﻿
+![](https://img.shields.io/github/v/release/thriken/baidu-sitemap-generator-for-wp)
+
+[DownLoad](https://github.com/thriken/baidu-sitemap-generator-for-wp)
+
+===Baidu Sitemap Generator===
+
 Contributors: thriken,柳城
+
 Tags: Baidu,XML,Sitemap
+
 Requires at least: 2.7
+
 Tested up to: 3.80
+
 Stable tag: trunk
+
 
 Baidu Sitemap Generator
 
 == Description ==
 
-This pulgin generates a Baidu XML-Sitemap for WordPress Blog. Also Build a real Static Sitemap-Page for all Search Engine. | 生成百度 Sitemap XML 文件。就相当于网站被百度--全球最大的中文搜索引擎订阅，进而为您的网站带来潜在的流量。同时生成一个静态的站点地图页面，对所有的搜索引擎都有利。
+This pulgin generates a Baidu XML-Sitemap for WordPress Blog. Also Build a real Static Sitemap-Page for all Search Engine. | 生成百度 Sitemap XML 文件。就相当于网站被百度--全球最大的中文搜索引擎订阅，进而为您的网站带来潜在的流量。同时生成一个静态的站点地图页面，对所有的搜索引擎都有利。兼容PHP7.4+，wordpress6.9已测试通过。
 
 
 Related Links:
-* <a href="https://blog.elec.top/baidu-sitemap-generator.html">Report a BUG</a>
+* <a href="https://blog.elec.top/baidu-sitemap-generator.html">Report a BUG</a>  
 * <a href="http://liucheng.name/2113/">原作者链接</a>
 * <a href="http://zhanzhang.baidu.com/">百度站长平台</a>
 
 v2.0.3 2026-5-26
 1. baidu_sitemao.php 第220行 一个过时的语法 ，get_all_category_ids() 修改为 get_terms()
 
-v2.0.2 [2026年5月15日] 
+v2.0.2 2026-5-15
 1. 修复一个语法不严谨
     问题在baidu_sitemap.php第420行：$get_baidu_sitemap_options 可能是字符串而非数组。
     需要添加类型检查：
